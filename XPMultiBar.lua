@@ -1,5 +1,5 @@
 --[=====[
-		## XP MultiBar ver. @@release-version@@
+		## XP MultiBar ver. 11.0.1-final
 		## XPMultiBar.lua - module
 		Initialization module for XPMultiBar addon
 --]=====]
@@ -29,13 +29,13 @@ local function ShowStartupMessage()
 end
 
 function XPMultiBar:OnInitialize()
-	--@debug@
+	--[===[@debug@
 	_G["XPMultiBar"] = XPMultiBar
 
 	for k, v in pairs(XPMultiBar.modules) do
 		XPMultiBar[k] = v
 	end
-	--@end-debug@
+	--@end-debug@]===]
 
     local version = GetAddOnMetadata(addonName, "Version") or ""
 	local _, _, vernum, vertype = version:find("^(%d+%.%d+%.%d+)-(%w+)$")

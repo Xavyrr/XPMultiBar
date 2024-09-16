@@ -1,5 +1,5 @@
 --[=====[
-		## XP MultiBar ver. @@release-version@@
+		## XP MultiBar ver. 11.0.1-final
 		## XPMultiBar_Bars.lua - module
 		Bar displaying logic for XPMultiBar addon
 --]=====]
@@ -56,7 +56,9 @@ function B.UpdateBarState(isOver, isAlt, isShift)
 	if isOver == nil then
 		isOver, isAlt, isShift = currentState.isOver, currentState.isAlt, currentState.isShift
 	end
-
+	if isOver then
+		--XPMultiBar:SET_FADE(true)
+	end
 	mouseOverWithShift = isOver and isShift
 
 	Utils.Override(currentState, { isOver = false, isAlt = false, isShift = false, })

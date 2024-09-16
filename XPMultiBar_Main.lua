@@ -1,5 +1,5 @@
 --[=====[
-		## XP MultiBar ver. @@release-version@@
+		## XP MultiBar ver. 11.0.1-final
 		## XPMultiBar_Main.lua - module
 		Main module for XPMultiBar addon
 --]=====]
@@ -273,7 +273,8 @@ local function UpdateXPBar(updateData)
 
 		UI:SetRemainingBarVisible(db.bars.showremaining)
 	end
-
+	
+	M:RESET_FADE()
 	UI:SetMainBarVisible(true)
 
 	local isLevelCap = reason == Config.XPLockedReasons.MAX_TRIAL_LEVEL
@@ -515,6 +516,9 @@ function M:OnEnable()
 	if not wowClassic then
 		self:RegisterEvent("PET_BATTLE_OPENING_START")
 		self:RegisterEvent("PET_BATTLE_CLOSE")
+		self:RegisterEvent("PLAYER_REGEN_DISABLED")
+		self:RegisterEvent("PLAYER_REGEN_ENABLED")
+		self:RegisterEvent("PLAYER_LOGIN")
 	end
 
 	-- Register some LSM3 callbacks
@@ -709,6 +713,54 @@ end
 function M:PET_BATTLE_CLOSE()
 	UI:EnableEx(Config.GetDB().general.hidestatus)
 end
+
+
+
+-- Hide and Show the XP frame when entering and leaving combat.
+function M:SET_FADE(state, time)
+	time = time or 0.5
+	if state then
+		UI:OnShow(time)
+	else
+		UI:OnHide(time)
+	end
+end
+
+function M:RESET_FADE()
+	if IsResting() then
+		UI:OnShow()
+	else
+		UI:OnHide()
+	end
+end
+
+
+function M:PLAYER_LOGIN()
+	self:RESET_FADE()
+end
+
+
+function M:PLAYER_REGEN_DISABLED()
+	self:SET_FADE(false)
+end
+
+function M:PLAYER_REGEN_ENABLED()
+	self:SET_FADE(true, 0.2)
+	C_Timer.After(5, function()
+		self:RESET_FADE()
+    end)
+end
+
+-- Hide and Show the XP frame when entering and leaving rested areas.
+function M:PLAYER_UPDATE_RESTING()
+	self:RESET_FADE()
+end
+--[[function M:PLAYER_XP_UPDATE()
+	self:SET_FADE(true, 0.2)
+	self:SET_FADE(true)--, 0.2)
+	self:UpdateXPData()
+end]]--
+
 
 function M:UpdateXPData(updateBar)
 	local prevData = updateBar and self.xpData:Get() or nil

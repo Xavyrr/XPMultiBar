@@ -1,5 +1,5 @@
 --[=====[
-		## XP MultiBar ver. @@release-version@@
+		## XP MultiBar ver. 11.0.1-final
 		## XPMultiBar_Frame.lua - module
 		Frame module (UI) for XPMultiBar addon
 --]=====]
@@ -152,6 +152,7 @@ end
 
 function bx:OnEnter(motion)
 	onBarEvent("button-over", true, IsControlKeyDown(), IsAltKeyDown(), IsShiftKeyDown())
+	UI:OnShow()
 end
 
 function bx:OnLeave(motion)
@@ -307,12 +308,33 @@ end
 function UI:OnEnable(...)
 	local hideStatusTrackingBar = ...
 	self.barFrame:Show()
+	UI:FadeFrame(self.barFrame, 1, 0.5)
 	self:SetStatusTrackingBarHidden(hideStatusTrackingBar)
+end
+
+function UI:OnShow(fade_time)
+	fade_time = fade_time or 0.5
+	UI:FadeFrame(self.barFrame, 1, fade_time)
+end
+
+function UI:OnHide(fade_time)
+	fade_time = fade_time or 0.5
+	UI:FadeFrame(self.barFrame, 0, fade_time)
 end
 
 function UI:OnDisable()
 	self:SetStatusTrackingBarHidden(false)
-	self.barFrame:Hide()
+	UI:FadeFrame(self.barFrame, 0, 0.5)
+	--self.barFrame:Hide()
+end
+
+function UI:FadeFrame(frame, target_alpha, duration)
+    -- Check if the frame exists
+    if not frame then return end
+	if target_alpha > 1 or target_alpha < 0 then return end
+
+    -- Fade out the frame over the specified duration
+    UIFrameFadeOut(frame, duration, frame:GetAlpha(), target_alpha)
 end
 
 function UI:RegisterBarEventHandler(func, receiver)

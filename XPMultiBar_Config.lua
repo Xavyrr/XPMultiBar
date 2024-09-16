@@ -1,5 +1,5 @@
 --[=====[
-		## XP MultiBar ver. @@release-version@@
+		## XP MultiBar ver. 11.0.1-final
 		## XPMultiBar_Config.lua - module
 		Configuration and initialization for XPMultiBar addon
 --]=====]
@@ -63,9 +63,9 @@ local AceGUIWidgetLSMlists = AceGUIWidgetLSMlists
 local DB_VERSION_NUM = 10
 local DB_VERSION = "V" .. tostring(DB_VERSION_NUM)
 
---@debug@
+--[===[@debug@
 L = Utils.DebugL(L)
---@end-debug@
+--@end-debug@]===]
 
 local md = {
 	title = GetAddOnMetadata(addonName, "Title"),

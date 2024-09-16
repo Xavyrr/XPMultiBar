@@ -1,5 +1,5 @@
 --[=====[
-		## XP MultiBar ver. @@release-version@@
+		## XP MultiBar ver. 11.0.1-final
 		## XPMultiBar_Data.lua - module
 		Volatile data storage for XPMultiBar addon
 --]=====]

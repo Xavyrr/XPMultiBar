@@ -1,5 +1,5 @@
 <!--
-		## XP MultiBar ver. @@release-version@@
+		## XP MultiBar ver. 11.0.1-final
 		## XPMultiBar_Frame.xml - module
 		Frame markup for XPMultiBar addon
 -->
@@ -29,8 +29,7 @@
 			<StatusBar parentKey="remaining" inherits="XPMultiBarInnerBarTemplate" />
 			<StatusBar parentKey="xpbar" inherits="XPMultiBarInnerBarTemplate" />
 			<StatusBar parentKey="bubbles" inherits="XPMultiBarInnerBarTemplate">
-				<BarTexture parentKey="tex" file="Interface\AddOns\XPMultiBar\Textures\bubbles" />
-				<BarColor r="0" g="0" b="0" a="0.5" />
+				<BarTexture parentKey="tex" file="Interface\AddOns\SharedMedia_MyMedia\media\Bubbles" />
 			</StatusBar>
 			<Button parentKey="button" inherits="BackdropTemplate" mixin="XPMultiBarButtonMixin" setAllPoints="true">
 				<KeyValues>

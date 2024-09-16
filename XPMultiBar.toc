@@ -1,15 +1,15 @@
-## Interface: 11503, 40400, 110000, 110002
+## Interface: 11503, 40400, 110002, 110005
 ## Title: XP MultiBar
 ## Notes: XP / Reputation bar
 ## Notes-ruRU: Панель досвіду / репутації
-## Author: @@author@@
-## Version: @@release-version@@
+## Author: RainmakerUA
+## Version: 11.0.1-final
 ## SavedVariables: XPMultiBarDB
 ## OptionalDeps: Ace3, LibQTip-1.0, LibSharedMedia-3.0
 ## X-Category: Miscellaneous, Artwork, Combat, Quests & Leveling
 ## X-Website: https://github.com/RainmakerUA/XPMultiBar
 ## X-Embeds: Ace3, LibQTip-1.0, LibSharedMedia-3.0
-## X-ReleaseDate: @@release-date@@
+## X-ReleaseDate: 20240915
 
 libs.xml
 
